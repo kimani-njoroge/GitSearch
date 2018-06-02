@@ -5,11 +5,13 @@ import { GitsearchService } from './service/gitsearch.service';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent
+    LandingComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,
