@@ -4,4 +4,22 @@
 </div>
 <div class="row">
 
+    <div class="col-md-4">
+      <div id="search">
+
+
+        <form (ngSubmit)=search(formSearch)  #formSearch="ngForm">
+          <input type="text" class="form-control" name="username" method="get" placeholder="search username/repository"
+            [(ngModel)]='username' (keyup)="userSearch()">
+          <!-- <button class="btn btn-primary" (click)="doSearch(doSearch.value)">Search</button> -->
+        </form>
+      </div>
+    </div>
+
+</div>
+<div *ngFor="let rep of repositories" class="row">
+
+    <li>{{rep.name}}</li>
+
+
 </div>

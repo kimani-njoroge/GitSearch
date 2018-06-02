@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { GitsearchService } from './service/gitsearch.service';
+import { FormsModule } from '@angular/forms';
 
+import { GitsearchService } from './service/gitsearch.service';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { SearchFormComponent } from './search-form/search-form.component';
@@ -15,7 +16,8 @@ import { SearchFormComponent } from './search-form/search-form.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [GitsearchService],
   bootstrap: [AppComponent]

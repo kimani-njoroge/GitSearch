@@ -17,7 +17,7 @@ export class GitsearchService {
     outcome3: Object[];
 
   constructor(private http:HttpClient) {
-    this.username = 'Kimani';
+    this.username = 'kimani-njoroge';
     this.outcome = [];
     this.outcome1 = [];
     this.outcome2 = [];
