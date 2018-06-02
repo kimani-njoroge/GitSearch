@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment'
+import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class GitsearchService {
     outcome2: Object[];
     outcome3: Object[];
 
-  constructor(private http:HttpCLient) {
+  constructor(private http:HttpClient) {
     this.username = 'Kimani';
     this.outcome = [];
     this.outcome1 = [];
@@ -41,14 +42,14 @@ export class GitsearchService {
      }
      return true;
    }
-   search(term: string) {
+   search(name: string) {
      let httpOptions = {
        headers: new HttpHeaders({
          'Content-Type': 'application/json',
        })
      }
      let promise = new Promise((resolve, reject) => {
-       this.http.get<any>(environment.apiUrl + "users/" + term, httpOptions).toPromise().then(
+       this.http.get<any>(environment.apiUrl + "users/" + name, httpOptions).toPromise().then(
          response => {
 
            if (this.isEmptyObject(response)){
@@ -58,7 +59,7 @@ export class GitsearchService {
            resolve()
          },
          err => console.log('Error occured')),
-         this.http.get<any>(environment.apiUrl + "search/repositories?q= {" + term + "}", httpOptions).toPromise().then(
+         this.http.get<any>(environment.apiUrl + "search/repositories?q= {" + name + "}", httpOptions).toPromise().then(
            response => {
 
             if (this.isEmptyObject(response['items'])) {
