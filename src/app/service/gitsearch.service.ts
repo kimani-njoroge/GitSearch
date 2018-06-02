@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -20,5 +21,9 @@ export class GitsearchService {
     this.outcome1 = [];
     this.outcome2 = [];
     this.outcome3 = [];
+  }
+  getUserProfile() {
+    return this.http.get('https://api.github.com/users/' + this.username + '?access_token=' + this.access_token)
+      .map(result => result);
   }
 }
