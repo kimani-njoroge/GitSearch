@@ -45,7 +45,31 @@ export class GitsearchService {
      let httpOptions = {
        headers: new HttpHeaders({
          'Content-Type': 'application/json',
-        //  'Authorization': environment.Authorization
        })
      }
+     let promise = new Promise((resolve, reject) => {
+       this.http.get<any>(environment.apiUrl + "users/" + term, httpOptions).toPromise().then(
+         response => {
+
+           if (this.isEmptyObject(response)){
+           } else {
+             this.outcome2.push(response)
+           }
+           resolve()
+         },
+         err => console.log('Error occured')),
+         this.http.get<any>(environment.apiUrl + "search/repositories?q= {" + term + "}", httpOptions).toPromise().then(
+           response => {
+
+            if (this.isEmptyObject(response['items'])) {
+            } else {
+              this.outcome1.push(response)
+              this.outcome3 = response.items;
+            }
+            resolve()
+           },
+           err => console.log('error ocurred'))
+     })
+     return promise;
+   }
 }
