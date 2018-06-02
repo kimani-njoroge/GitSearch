@@ -33,4 +33,19 @@ export class GitsearchService {
    updateUser(username: string) {
      this.username = username;
    }
+   isEmptyObject(obj) {
+     for (var property in obj) {
+       if (obj.hasOwnProperty(property)) {
+         return false;
+       }
+     }
+     return true;
+   }
+   search(term: string) {
+     let httpOptions = {
+       headers: new HttpHeaders({
+         'Content-Type': 'application/json',
+        //  'Authorization': environment.Authorization
+       })
+     }
 }
