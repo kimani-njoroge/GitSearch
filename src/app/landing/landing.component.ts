@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiRequestService } from '../http/api-request.service';
+import { GitsearchService } from '../service/gitsearch.service';
 
 
 @Component({
@@ -10,7 +10,11 @@ import { ApiRequestService } from '../http/api-request.service';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  user: any=[];
+  repositories: any =[];
+  username: string;
+
+  constructor(private GitsearchService: GitsearchService, public gitsearch: GitsearchService, private http: HttpClient) {}
 
   ngOnInit() {
   }
