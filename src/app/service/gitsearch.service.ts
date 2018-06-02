@@ -30,4 +30,7 @@ export class GitsearchService {
      return this.http.get('https://api.github.com/users/' + this.username  + '/repos?access_token=' + this.access_token)
        .map(outcome => outcome);
    }
+   updateUser(username: string) {
+     this.username = username;
+   }
 }
