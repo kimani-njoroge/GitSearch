@@ -1,0 +1,9 @@
+.header{
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding-bottom: 40px;
+}
+#search{
+  margin: 8%;
+}
