@@ -61,7 +61,6 @@ export class GitsearchService {
          err => console.log('Error occured')),
          this.http.get<any>(environment.apiUrl + "search/repositories?q= {" + name + "}", httpOptions).toPromise().then(
            response => {
-
             if (this.isEmptyObject(response['items'])) {
             } else {
               this.outcome1.push(response)
