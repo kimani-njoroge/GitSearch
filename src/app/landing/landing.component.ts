@@ -38,6 +38,7 @@ export class LandingComponent implements OnInit {
   userSearch(){
     this.GitsearchService.updateUser(this.username);
     this.GitsearchService.getUser().subscribe(users => {
+      console.log(users);
       this.user = users;
     });
     this.GitsearchService.getRepo().subscribe(repositories => {
