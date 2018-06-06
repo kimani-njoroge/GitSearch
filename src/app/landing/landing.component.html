@@ -19,8 +19,17 @@
   </div>
   <div class="card">
     <div class="card-body">
-        <p appHighlight>Name:  {{user.login}}</p>
-        Repositories : {{user.public_repos}}
+      <div class="row">
+        <div class="col-md-6">
+          <p appHighlight>Name:  {{user.login}}</p>
+          Repositories : {{user.public_repos}}<br>
+          created: {{user.created_at}}
+        </div>
+        <div class="col-md-6">
+          <img src="{{user.avatar_url}}" alt="">
+        </div>
+      </div>
+
     </div>
   </div>
 
