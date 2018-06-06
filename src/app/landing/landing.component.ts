@@ -11,8 +11,11 @@ import { GitsearchService } from '../service/gitsearch.service';
 export class LandingComponent implements OnInit {
 
   user: any=[];
-  repositories: any =[];
+  repositories: any=[];
   username: string;
+  reponame: '';
+  repo:any=[];
+
 
   constructor(private GitsearchService: GitsearchService, public gitsearch: GitsearchService, private http: HttpClient) {}
 
@@ -42,8 +45,18 @@ export class LandingComponent implements OnInit {
       this.user = users;
     });
     this.GitsearchService.getRepo().subscribe(repositories => {
+      // console.log(repositories);
       this.repositories = repositories;
     });
+  }
+
+  repoSearch(){
+    console.log(this.reponame)
+    let res = this.GitsearchService.searchRepo(this.reponame)
+    res.then((response)=>{
+    this.repo = response
+    console.log(response)
+  })
   }
 
 }

@@ -9,6 +9,8 @@ import 'rxjs/add/operator/map';
 export class GitsearchService {
 
     private username: string;
+    // public reponame: string;
+    public profileUser: any;
     private access_token: string = environment.access_token;
 
     outcome: Object[];
@@ -18,6 +20,7 @@ export class GitsearchService {
 
   constructor(private http:HttpClient) {
     this.username = 'kimani-njoroge';
+    // this.reponame = '';
     this.outcome = [];
     this.outcome1 = [];
     this.outcome2 = [];
@@ -34,6 +37,7 @@ export class GitsearchService {
    updateUser(username: string) {
      this.username = username;
    }
+
    isEmptyObject(obj) {
      for (var property in obj) {
        if (obj.hasOwnProperty(property)) {
@@ -59,7 +63,7 @@ export class GitsearchService {
            resolve()
          },
          err => console.log('Error occured')),
-         this.http.get<any>(environment.apiUrl + "search/repositories?q= {" + name + "}", httpOptions).toPromise().then(
+         this.http.get<any>(environment.apiUrl + "search/repositories?q=" + name, httpOptions).toPromise().then(
            response => {
             if (this.isEmptyObject(response['items'])) {
             } else {
@@ -71,5 +75,19 @@ export class GitsearchService {
            err => console.log('error ocurred'))
      })
      return promise;
+   }
+
+   searchRepo(reponame){
+     let mypromise = new Promise((resolve,reject)=>{
+       this.http.get(environment.apiUrl + "search/repositories?q=" +reponame).toPromise().then(response =>{
+         this.profileUser = response;
+         console.log(response);
+         resolve(response)
+       },
+       error => {
+         reject(error)
+       })
+     })
+     return mypromise
    }
 }
