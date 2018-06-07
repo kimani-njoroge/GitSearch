@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-landing></app-landing>\n"
+module.exports = "\n<app-landing></app-landing>\n"
 
 /***/ }),
 
@@ -98,12 +98,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_gitsearch_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./service/gitsearch.service */ "./src/app/service/gitsearch.service.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _landing_landing_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./landing/landing.component */ "./src/app/landing/landing.component.ts");
+/* harmony import */ var _highlight_directive__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./highlight.directive */ "./src/app/highlight.directive.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -119,6 +121,7 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
                 _landing_landing_component__WEBPACK_IMPORTED_MODULE_6__["LandingComponent"],
+                _highlight_directive__WEBPACK_IMPORTED_MODULE_7__["HighlightDirective"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -130,6 +133,44 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/highlight.directive.ts":
+/*!****************************************!*\
+  !*** ./src/app/highlight.directive.ts ***!
+  \****************************************/
+/*! exports provided: HighlightDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HighlightDirective", function() { return HighlightDirective; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HighlightDirective = /** @class */ (function () {
+    function HighlightDirective(el) {
+        el.nativeElement.style.background = 'green';
+    }
+    HighlightDirective = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
+            selector: '[appHighlight]'
+        }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
+    ], HighlightDirective);
+    return HighlightDirective;
 }());
 
 
@@ -154,7 +195,7 @@ module.exports = ".header{\n  background-color: black;\n  color: white;\n  text-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"header\">\n    <h1>GitHub Search</h1>\n  </div>\n  <div class=\"row\">\n\n      <div class=\"col-md-4\">\n        <div id=\"search\">\n\n\n          <form (ngSubmit)=search(formSearch)  #formSearch=\"ngForm\">\n            <label for=\"search\">Search:</label>\n            <input type=\"text\" class=\"form-control\" name=\"username\" method=\"get\" placeholder=\"search username/repository\"\n              [(ngModel)]='username' (keyup)=\"userSearch()\">\n          </form>\n        </div>\n      </div>\n\n  </div>\n  <div *ngFor=\"let rep of repositories\" class=\"row\">\n\n      <li>{{rep.name}}<br>\n          {{rep.description}}<br>\n      </li>\n\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"header\">\n    <h1>GitHub Search</h1>\n  </div>\n  <div class=\"row\">\n\n      <div class=\"col-md-4\">\n        <div id=\"search\">\n\n\n          <form (ngSubmit)=search(formSearch)  #formSearch=\"ngForm\">\n            <label for=\"search\">Search:</label>\n            <input type=\"text\" class=\"form-control\" name=\"username\" method=\"get\" placeholder=\"search username/repository\"\n              [(ngModel)]='username' (keyup)=\"userSearch()\">\n\n              <label for=\"search\">Search Repo:</label>\n              <input type=\"text\" class=\"form-control\" name=\"username\" method=\"get\" placeholder=\"search username/repository\"\n                [(ngModel)]='reponame' (keyup)=\"repoSearch()\">\n          </form>\n        </div>\n      </div>\n\n  </div>\n  <div class=\"card\">\n    <div class=\"card-body\">\n      <div class=\"row\">\n        <div class=\"col-md-6\">\n          <p appHighlight>Name:  {{user.login}}</p>\n          Repositories : {{user.public_repos}}<br>\n          created: {{user.created_at}}\n        </div>\n        <div class=\"col-md-6\">\n          <img src=\"{{user.avatar_url}}\" alt=\"\">\n        </div>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"card\">\n    <div *ngFor=\"let rep of repositories\" class=\"card-body\">\n\n        <li>{{rep.name}}<br>\n            {{rep.description}}<br>\n        </li>\n\n\n    </div>\n  </div>\n  <div *ngFor=\"let lis of repo['items']\" class=\"row\">\n    <li>{{lis['name']}}</li>\n\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -190,6 +231,7 @@ var LandingComponent = /** @class */ (function () {
         this.http = http;
         this.user = [];
         this.repositories = [];
+        this.repo = [];
     }
     LandingComponent.prototype.search = function (name) {
         name = name || "kimani-njoroge";
@@ -212,10 +254,21 @@ var LandingComponent = /** @class */ (function () {
         var _this = this;
         this.GitsearchService.updateUser(this.username);
         this.GitsearchService.getUser().subscribe(function (users) {
+            console.log(users);
             _this.user = users;
         });
         this.GitsearchService.getRepo().subscribe(function (repositories) {
+            // console.log(repositories);
             _this.repositories = repositories;
+        });
+    };
+    LandingComponent.prototype.repoSearch = function () {
+        var _this = this;
+        console.log(this.reponame);
+        var res = this.GitsearchService.searchRepo(this.reponame);
+        res.then(function (response) {
+            _this.repo = response;
+            console.log(response);
         });
     };
     LandingComponent = __decorate([
@@ -265,6 +318,7 @@ var GitsearchService = /** @class */ (function () {
         this.http = http;
         this.access_token = _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].access_token;
         this.username = 'kimani-njoroge';
+        // this.reponame = '';
         this.outcome = [];
         this.outcome1 = [];
         this.outcome2 = [];
@@ -305,7 +359,7 @@ var GitsearchService = /** @class */ (function () {
                 }
                 resolve();
             }, function (err) { return console.log('Error occured'); }),
-                _this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl + "search/repositories?q= {" + name + "}", httpOptions).toPromise().then(function (response) {
+                _this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl + "search/repositories?q=" + name, httpOptions).toPromise().then(function (response) {
                     if (_this.isEmptyObject(response['items'])) {
                     }
                     else {
@@ -316,6 +370,19 @@ var GitsearchService = /** @class */ (function () {
                 }, function (err) { return console.log('error ocurred'); });
         });
         return promise;
+    };
+    GitsearchService.prototype.searchRepo = function (reponame) {
+        var _this = this;
+        var mypromise = new Promise(function (resolve, reject) {
+            _this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl + "search/repositories?q=" + reponame).toPromise().then(function (response) {
+                _this.profileUser = response;
+                console.log(response);
+                resolve(response);
+            }, function (error) {
+                reject(error);
+            });
+        });
+        return mypromise;
     };
     GitsearchService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
