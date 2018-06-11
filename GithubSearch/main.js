@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".header{\n  background-color: black;\n  color: white;\n  text-align: center;\n  padding-bottom: 40px;\n}\na{\n  color: #9c6e72;\n}\n"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<app-landing></app-landing>\n"
+module.exports = "<div class=\"header\">\n  <h1>GitHub Search</h1>\n  <ul class=\"nav navbar-nav navbar-right overlay\">\n        <li><a routerLink='/repos' routerLinkActive='active'>Repositories</a></li>\n        <li><a routerLink='/landing' routerLinkActive='active'>Home/User Search</a></li>\n\n\n      </ul>\n</div>\n\n<!-- <app-landing></app-landing> -->\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -95,10 +95,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _service_gitsearch_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./service/gitsearch.service */ "./src/app/service/gitsearch.service.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _landing_landing_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./landing/landing.component */ "./src/app/landing/landing.component.ts");
-/* harmony import */ var _highlight_directive__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./highlight.directive */ "./src/app/highlight.directive.ts");
+/* harmony import */ var _routing_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routing/routing.module */ "./src/app/routing/routing.module.ts");
+/* harmony import */ var _service_gitsearch_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./service/gitsearch.service */ "./src/app/service/gitsearch.service.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _landing_landing_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./landing/landing.component */ "./src/app/landing/landing.component.ts");
+/* harmony import */ var _highlight_directive__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./highlight.directive */ "./src/app/highlight.directive.ts");
+/* harmony import */ var _repos_repos_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./repos/repos.component */ "./src/app/repos/repos.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -113,23 +115,27 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _landing_landing_component__WEBPACK_IMPORTED_MODULE_6__["LandingComponent"],
-                _highlight_directive__WEBPACK_IMPORTED_MODULE_7__["HighlightDirective"],
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+                _landing_landing_component__WEBPACK_IMPORTED_MODULE_7__["LandingComponent"],
+                _highlight_directive__WEBPACK_IMPORTED_MODULE_8__["HighlightDirective"],
+                _repos_repos_component__WEBPACK_IMPORTED_MODULE_9__["ReposComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _routing_routing_module__WEBPACK_IMPORTED_MODULE_4__["RoutingModule"]
             ],
-            providers: [_service_gitsearch_service__WEBPACK_IMPORTED_MODULE_4__["GitsearchService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            providers: [_service_gitsearch_service__WEBPACK_IMPORTED_MODULE_5__["GitsearchService"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -184,7 +190,7 @@ var HighlightDirective = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".header{\n  background-color: black;\n  color: white;\n  text-align: center;\n  padding-bottom: 40px;\n}\n#search{\n  margin: 8%;\n}\n"
+module.exports = ".header{\n  background-color: black;\n  color: white;\n  text-align: center;\n  padding-bottom: 40px;\n}\n#search{\n  margin: 8%;\n}\na{\n  text-decoration:none;\n}\n"
 
 /***/ }),
 
@@ -195,7 +201,7 @@ module.exports = ".header{\n  background-color: black;\n  color: white;\n  text-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"header\">\n    <h1>GitHub Search</h1>\n  </div>\n  <div class=\"row\">\n\n      <div class=\"col-md-4\">\n        <div id=\"search\">\n\n\n          <form (ngSubmit)=search(formSearch)  #formSearch=\"ngForm\">\n            <label for=\"search\">Search:</label>\n            <input type=\"text\" class=\"form-control\" name=\"username\" method=\"get\" placeholder=\"search username/repository\"\n              [(ngModel)]='username' (keyup)=\"userSearch()\">\n\n              <label for=\"search\">Search Repo:</label>\n              <input type=\"text\" class=\"form-control\" name=\"username\" method=\"get\" placeholder=\"search username/repository\"\n                [(ngModel)]='reponame' (keyup)=\"repoSearch()\">\n          </form>\n        </div>\n      </div>\n\n  </div>\n  <div class=\"card\">\n    <div class=\"card-body\">\n      <div class=\"row\">\n        <div class=\"col-md-6\">\n          <p appHighlight>Name:  {{user.login}}</p>\n          Repositories : {{user.public_repos}}<br>\n          created: {{user.created_at}}\n        </div>\n        <div class=\"col-md-6\">\n          <img src=\"{{user.avatar_url}}\" alt=\"\">\n        </div>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"card\">\n    <div *ngFor=\"let rep of repositories\" class=\"card-body\">\n\n        <li>{{rep.name}}<br>\n            {{rep.description}}<br>\n        </li>\n\n\n    </div>\n  </div>\n  <div *ngFor=\"let lis of repo['items']\" class=\"row\">\n    <li>{{lis['name']}}</li>\n\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container\">\n\n  <div class=\"row\">\n\n      <div class=\"col-md-4\">\n        <div id=\"search\">\n\n\n          <form (ngSubmit)=search(formSearch)  #formSearch=\"ngForm\">\n            <label for=\"search\">Search:</label>\n            <input type=\"text\" class=\"form-control\" name=\"username\" method=\"get\" placeholder=\"search username/repository\"\n              [(ngModel)]='username' (keyup)=\"userSearch()\">\n          </form>\n        </div>\n      </div>\n\n  </div>\n  <div class=\"card\">\n    <div class=\"card-body\">\n      <div class=\"row\">\n        <div class=\"col-md-6\">\n          <p appHighlight>Name:  {{user.login}}</p>\n          Repositories : {{user.public_repos}}<br>\n          created: {{user.created_at}}<br>\n          <button type=\"button\" class=\"btn btn-outline-info\"><a href=\"{{user.html_url}}\">View Profile &raquo;</a></button>\n\n        </div>\n        <div class=\"col-md-6\">\n          <img src=\"{{user.avatar_url}}\" alt=\"\">\n        </div>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"card\">\n    <div *ngFor=\"let rep of repositories\" class=\"card-body\">\n\n        <li>{{rep.name}}<br>\n            {{rep.description}}<br>\n        </li>\n\n\n    </div>\n  </div>\n  <div *ngFor=\"let lis of repo['items']\" class=\"row\">\n    <li>{{lis['name']}}</li>\n\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -262,15 +268,6 @@ var LandingComponent = /** @class */ (function () {
             _this.repositories = repositories;
         });
     };
-    LandingComponent.prototype.repoSearch = function () {
-        var _this = this;
-        console.log(this.reponame);
-        var res = this.GitsearchService.searchRepo(this.reponame);
-        res.then(function (response) {
-            _this.repo = response;
-            console.log(response);
-        });
-    };
     LandingComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-landing',
@@ -280,6 +277,138 @@ var LandingComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_service_gitsearch_service__WEBPACK_IMPORTED_MODULE_2__["GitsearchService"], _service_gitsearch_service__WEBPACK_IMPORTED_MODULE_2__["GitsearchService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], LandingComponent);
     return LandingComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/repos/repos.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/repos/repos.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/repos/repos.component.html":
+/*!********************************************!*\
+  !*** ./src/app/repos/repos.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"header\">\n    <h1>GitHub Search</h1>\n  </div>\n  <div class=\"row\">\n\n      <div class=\"col-md-4\">\n        <div id=\"search\">\n\n\n          <form (ngSubmit)=search(formSearch)  #formSearch=\"ngForm\">\n              <label for=\"search\">Search Repo:</label>\n              <input type=\"text\" class=\"form-control\" name=\"username\" method=\"get\" placeholder=\"search username/repository\"\n                [(ngModel)]='reponame' (keyup)=\"repoSearch()\">\n          </form>\n        </div>\n      </div>\n\n  </div>\n\n\n  <div class=\"card\">\n    <div class=\"card-body\">\n      <div *ngFor=\"let lis of repo['items']\" class=\"row\">\n\n          <strong><a href=\"{{lis['html_url']}}\">{{lis['name']}}</a></strong><br>\n          {{lis['description']}} <br>\n\n\n      </div>\n    </div>\n\n  </div>\n\n\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/repos/repos.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/repos/repos.component.ts ***!
+  \******************************************/
+/*! exports provided: ReposComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReposComponent", function() { return ReposComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _service_gitsearch_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../service/gitsearch.service */ "./src/app/service/gitsearch.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ReposComponent = /** @class */ (function () {
+    function ReposComponent(GitsearchService, gitsearch, http) {
+        this.GitsearchService = GitsearchService;
+        this.gitsearch = gitsearch;
+        this.http = http;
+        this.user = [];
+        this.repositories = [];
+        this.repo = [];
+    }
+    ReposComponent.prototype.ngOnInit = function () {
+    };
+    ReposComponent.prototype.repoSearch = function () {
+        var _this = this;
+        console.log(this.reponame);
+        var res = this.GitsearchService.searchRepo(this.reponame);
+        res.then(function (response) {
+            _this.repo = response;
+            console.log(response);
+        });
+    };
+    ReposComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-repos',
+            template: __webpack_require__(/*! ./repos.component.html */ "./src/app/repos/repos.component.html"),
+            styles: [__webpack_require__(/*! ./repos.component.css */ "./src/app/repos/repos.component.css")]
+        }),
+        __metadata("design:paramtypes", [_service_gitsearch_service__WEBPACK_IMPORTED_MODULE_2__["GitsearchService"], _service_gitsearch_service__WEBPACK_IMPORTED_MODULE_2__["GitsearchService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], ReposComponent);
+    return ReposComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/routing/routing.module.ts":
+/*!*******************************************!*\
+  !*** ./src/app/routing/routing.module.ts ***!
+  \*******************************************/
+/*! exports provided: RoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoutingModule", function() { return RoutingModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _repos_repos_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../repos/repos.component */ "./src/app/repos/repos.component.ts");
+/* harmony import */ var _landing_landing_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../landing/landing.component */ "./src/app/landing/landing.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var routes = [
+    { path: "repos", component: _repos_repos_component__WEBPACK_IMPORTED_MODULE_3__["ReposComponent"] },
+    { path: "landing", component: _landing_landing_component__WEBPACK_IMPORTED_MODULE_4__["LandingComponent"] }
+];
+var RoutingModule = /** @class */ (function () {
+    function RoutingModule() {
+    }
+    RoutingModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)
+            ],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+            declarations: []
+        })
+    ], RoutingModule);
+    return RoutingModule;
 }());
 
 
