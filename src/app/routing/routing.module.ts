@@ -6,7 +6,7 @@ import { ReposComponent } from '../repos/repos.component';
 import { LandingComponent } from '../landing/landing.component';
 
 const routes:Routes=[
-  {path:"repos",component:ReposComponent}
+  {path:"repos",component:ReposComponent},
   {path:"landing",component:LandingComponent}
 ]
 
