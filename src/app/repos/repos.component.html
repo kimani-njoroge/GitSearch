@@ -1,5 +1,7 @@
 <div class="container">
-
+  <div class="header">
+    <h1>GitHub Search</h1>
+  </div>
   <div class="row">
 
       <div class="col-md-4">
@@ -7,10 +9,6 @@
 
 
           <form (ngSubmit)=search(formSearch)  #formSearch="ngForm">
-            <label for="search">Search:</label>
-            <input type="text" class="form-control" name="username" method="get" placeholder="search username/repository"
-              [(ngModel)]='username' (keyup)="userSearch()">
-
               <label for="search">Search Repo:</label>
               <input type="text" class="form-control" name="username" method="get" placeholder="search username/repository"
                 [(ngModel)]='reponame' (keyup)="repoSearch()">
@@ -19,21 +17,7 @@
       </div>
 
   </div>
-  <div class="card">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-6">
-          <p appHighlight>Name:  {{user.login}}</p>
-          Repositories : {{user.public_repos}}<br>
-          created: {{user.created_at}}
-        </div>
-        <div class="col-md-6">
-          <img src="{{user.avatar_url}}" alt="">
-        </div>
-      </div>
 
-    </div>
-  </div>
 
   <div class="card">
     <div *ngFor="let rep of repositories" class="card-body">

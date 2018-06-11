@@ -50,13 +50,6 @@ export class LandingComponent implements OnInit {
     });
   }
 
-  repoSearch(){
-    console.log(this.reponame)
-    let res = this.GitsearchService.searchRepo(this.reponame)
-    res.then((response)=>{
-    this.repo = response
-    console.log(response)
-  })
-  }
+
 
 }
