@@ -10,10 +10,6 @@
             <label for="search">Search:</label>
             <input type="text" class="form-control" name="username" method="get" placeholder="search username/repository"
               [(ngModel)]='username' (keyup)="userSearch()">
-
-              <label for="search">Search Repo:</label>
-              <input type="text" class="form-control" name="username" method="get" placeholder="search username/repository"
-                [(ngModel)]='reponame' (keyup)="repoSearch()">
           </form>
         </div>
       </div>
@@ -25,7 +21,9 @@
         <div class="col-md-6">
           <p appHighlight>Name:  {{user.login}}</p>
           Repositories : {{user.public_repos}}<br>
-          created: {{user.created_at}}
+          created: {{user.created_at}}<br>
+          <button type="button" class="btn btn-outline-info"><a href="{{user.html_url}}">View Profile &raquo;</a></button>
+
         </div>
         <div class="col-md-6">
           <img src="{{user.avatar_url}}" alt="">
